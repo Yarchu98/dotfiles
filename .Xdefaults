@@ -38,7 +38,7 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.font: xft:IBM Plex Mono:medium:pixelsize=13,xft:Source Code Pro Semibold:size=12
+URxvt.font: xft:IBM Plex Mono:medium:pixelsize=13:minspace=false,xft:Unifont:pixelsize=17
 !URxvt.boldFont: -*-rissole-*
 !URxvt.italicFont: -*-rissole-*
 !URxvt.boldItalicfont: -*-rissole-*
@@ -52,8 +52,10 @@ URxvt.saveline: 2048
 URxvt.scrollBar: false
 URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
-URxvt.depth: 24
+URxvt.depth: 32
+URxvt.background: rgba:0000/0000/0200/c800
 URxvt.iso14755: false
+URxvt.transparent: false
 
 !! Common Keybinds for Navigations
 URxvt.keysym.Shift-Up: command:\033]720;1\007
