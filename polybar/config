@@ -1,0 +1,175 @@
+[bar/mybar]
+
+; set output monitor
+monitor = HDMI-A-0
+
+; tell wm not to configure the window
+override-redirect = true
+
+; put the bar in the bottom
+bottom = true
+
+; prefer fixed center pos for the 'modules-center'-block
+fixed-center = true
+
+; dimension defined as perecentage or pixel values
+width = 95%
+height = 32
+
+; offset defined as percentage or pixel values
+offset-x = 2.5%
+offset-y = 13
+
+; background color
+background = #2e3440
+
+; foreground color
+foreground = #000
+
+; under-/overline pixel size and argb color
+line-size = 2
+line-color = #fff
+
+; num of spaces to end in the beginning/end of the bar
+padding-right = 3
+
+; num of spaces to add before each module
+module-margin = 1
+
+; fonts
+font-0 = IBM Plex Mono:medium:size=8;2
+font-1 = FontAwesome5Free:style=Solid:size=10;3
+font-2 = unifont:size=10;3
+
+; modules
+modules-left = i3
+modules-center = 
+modules-right = wired-network sep memory sep cpu sep date
+
+; self-expl stuff
+separator = 
+spacing = 0
+dim-value = 1.0
+wm-name = i3
+
+; tray
+tray-position = center
+tray-detached = false
+tray-maxsize = 16
+tray-transparent = false
+tray-background = ${root.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1.0
+
+; let polybar calculate the dpi for non-scalable fonts
+dpi-x = 0
+dpi-y = 0
+
+; support for inter-process messaging
+enable-icp = false
+
+; -------------------------------------------------------------------------------------
+; Modules
+; -------------------------------------------------------------------------------------
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+
+fuzzy-match = true
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+label-unfocused-foreground = #d8dee9
+
+label-focused = %index%
+label-focused-background = #4c566a
+label-focused-padding = 2
+label-focused-foreground = #d8dee9
+
+[module/date]
+type = internal/date
+
+interval = 1.0
+date = %d.%m.%Y
+time = %H:%M
+
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+label-font = 0
+label-foreground = #d8dee9
+
+
+[module/wired-network]
+type = internal/network
+interface = enp37s0
+
+label-connected = :%upspeed% :%downspeed%
+format-connected = <label-connected>
+label-connected-foreground = #a3be8c
+
+format-disconnected = <label-disconnected>
+label-disconnected = Nicht verbunden
+label-disconnected-foreground = #c33027
+label-disconnected-background = #a3be8c
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+label =  %percentage:2%%
+
+label-foreground = #81A1C1
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+format = <label>
+
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+;   %percentage_swap_used%
+;   %percentage_swap_free%
+;   %mb_swap_total%
+;   %mb_swap_free%
+;   %mb_swap_used%
+;   %gb_swap_total%
+;   %gb_swap_free%
+;   %gb_swap_used%
+
+label =  %gb_used% / %gb_total%
+
+label-foreground = #B48EAD
+
+[module/decor-glyph]
+type = custom/text
+content-foreground = #4C566A
+margin = 0
+
+[module/sep]
+inherit = module/decor-glyph
+content = "/"
