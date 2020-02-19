@@ -44,7 +44,7 @@ font-2 = unifont:size=10;3
 ; modules
 modules-left = i3
 modules-center = 
-modules-right = wired-network sep memory sep cpu sep date
+modules-right = cpu sep memory sep temperature sep wired-network sep alsa sep date
 
 ; self-expl stuff
 separator = 
@@ -117,11 +117,11 @@ interface = enp37s0
 
 label-connected = :%upspeed% :%downspeed%
 format-connected = <label-connected>
-label-connected-foreground = #a3be8c
+label-connected-foreground = #C5E1A5
 
 format-disconnected = <label-disconnected>
 label-disconnected = Nicht verbunden
-label-disconnected-foreground = #c33027
+label-disconnected-foreground = #d62728
 label-disconnected-background = #a3be8c
 
 [module/cpu]
@@ -133,37 +133,65 @@ interval = 0.5
 
 label =  %percentage:2%%
 
-label-foreground = #81A1C1
+label-foreground = #4FC3F7
 
 [module/memory]
 type = internal/memory
 
-; Seconds to sleep between updates
-; Default: 1
-interval = 0.5
+interval = 1
 format = <label>
-
-; Available tokens:
-;   %percentage_used% (default)
-;   %percentage_free%
-;   %gb_used%
-;   %gb_free%
-;   %gb_total%
-;   %mb_used%
-;   %mb_free%
-;   %mb_total%
-;   %percentage_swap_used%
-;   %percentage_swap_free%
-;   %mb_swap_total%
-;   %mb_swap_free%
-;   %mb_swap_used%
-;   %gb_swap_total%
-;   %gb_swap_free%
-;   %gb_swap_used%
 
 label =  %gb_used% / %gb_total%
 
-label-foreground = #B48EAD
+label-foreground = #F48FB1
+
+[module/temperature]
+type = internal/temperature
+
+interval = 1
+thermal-zone = 0
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
+
+base-temperature = 30
+warn-temperature = 70
+
+units = true
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+label-foreground = #FFF176
+
+label-warn = %temperature-c%
+label-warn-foreground = #d62728
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #FFF176
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+mapped = true
+interval = 5
+format-volume = <ramp-volume> <label-volume>
+
+label-muted =  Stumm
+label-muted-foreground = #D84315
+
+label-volume-foreground = #FFB300
+ramp-volume-foreground = #FFB300
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/decor-glyph]
 type = custom/text
