@@ -4,7 +4,7 @@ These are my dotfiles, which I used for i3 in combination with rofi and picom. P
 
 ## Installation
 
-Just clone the repository to your `home/config` folder. The directories should be set up correctly. 
+Just clone the repository to your `home/.config` folder. The directories should be set up correctly. 
 
 ## Disclaimer
 
