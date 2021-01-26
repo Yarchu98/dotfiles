@@ -4,8 +4,7 @@ These are my dotfiles, which I used for i3 in combination with rofi and picom. P
 
 ## Installation
 
-Just clone the repository to your `home/.config` folder. The directories should be set up correctly. 
-
-## Disclaimer
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```bash 
+cd home/.config && git clone https://github.com/alexschu98/dotfiles.git
+``` 
+**The directories should be set up correctly.**
